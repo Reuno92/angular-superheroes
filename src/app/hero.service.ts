@@ -13,8 +13,14 @@ export class HeroService {
     constructor(private messageService: MessageService) { }
 
     getHeroes(): Observable<Hero[]> {
-        // Todo: send the message _after_ fetching the heroes
+        // A faire: envoyer le message _APRÈS_ la recupération des héros.
         this.messageService.add('HeroService: fetched heroes');
         return of(HEROES);
+    }
+
+    getHero(id: number): Observable<Hero> {
+        // A faire : Envoyer le message _APRÈS_ la récupération du héro.
+        this.messageService.add(`HeroService: Fetched hero id=${id}`);
+        return of(HEROES.find(hero => hero.id === id));
     }
 }
